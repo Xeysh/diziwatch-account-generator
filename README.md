@@ -3,7 +3,7 @@ Educational purposes only.
 
 # Credits:
 
-mailtm.py - emrovsky
+mailtm.py & proxy - emrovsky
 
 https://github.com/emrovsky
 
