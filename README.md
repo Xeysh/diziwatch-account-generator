@@ -5,6 +5,10 @@ Yalnızca eğitim amaçlıdır.
 
 Solution_Captcha klasöründe Solve.py'daki RunProfile fonksiyonundaki profile değişkenini kendi bilgisayarınızda yer alan chrome profile'iyle değiştiriceksiniz.
 
+# CMD'ye bunu yazın:
+
+```pip install -r requirements.txt```
+
 
 # Credits:
 
