@@ -12,7 +12,7 @@ print(Fore.YELLOW + "Captcha'yı siz çözüceksiniz.")
 
 class DiziWatch:
 
-    def __init__(self):
+    def __init__(self) -> None:
         proxy = random.choice(open("proxy.txt", "r").readlines()).strip()
         if proxy == []:
             raise Exception("'proxy.txt' is empty.")
