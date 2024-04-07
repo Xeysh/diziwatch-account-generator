@@ -1,5 +1,9 @@
 # diziwatch-account-generator
-Educational purposes only.
+Yalnızca eğitim amaçlıdır.
+
+# Kullanım
+
+Solution_Captcha klasöründe Solve.py'daki RunProfile fonksiyonundaki profile değişkenini kendi bilgisayarınızda yer alan chrome profile'iyle yerleştiriceksiniz.
 
 # Credits:
 
