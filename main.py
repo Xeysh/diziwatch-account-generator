@@ -11,8 +11,7 @@ import psutil
 print(Fore.YELLOW + "Captcha'yı siz çözüceksiniz.")
 
 class DiziWatch:
-
-    def __init__(self) -> None:
+    def __init__(self):
         proxy = random.choice(open("proxy.txt", "r").readlines()).strip()
         if proxy == []:
             raise Exception("'proxy.txt' is empty.")
@@ -25,12 +24,12 @@ class DiziWatch:
 
         captcha_token = json.loads(captcha)["Solution"]
 
-        email = MailTmApi().get_random_mail(MailTmApi().get_random_avaible_domain())["email"]
+        email = MailTmApi().get_random_mail(MailTmApi().get_random_avaible_domain())
 
         info = {
                        'action': 'register_action',
                        'username': Faker().word().lower() + "12347",
-                       'mail_id': email,
+                       'mail_id': email["email"],
                        'passwrd': "whysoserius1",
                        'passwrd2': "whysoserius1",
                        'captcha': captcha_token
@@ -44,7 +43,7 @@ class DiziWatch:
         if r.status_code != 200:
             raise Exception(Fore.RED + f"Kayıt olunurken bir sorun oluştu. - {r.status_code}\n{r.text}")
 
-        return Fore.GREEN + f"Başarıyla kayıt olundu. - {r.status_code}\nİsim: {info['username']}\nParola: {info['passwrd']}\nMail: {info['mail_id']}"
+        return Fore.GREEN + f"Başarıyla kayıt olundu. - {r.status_code}\nİsim: {info['username']}\nParola: {info['passwrd']}\nMail: {info['mail_id']}\nMail Tokeni: {email['token']}"
 
     @staticmethod
     def killer() -> None:
