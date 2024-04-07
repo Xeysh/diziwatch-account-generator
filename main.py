@@ -17,7 +17,7 @@ class DiziWatch:
         if not proxy:
             raise Exception("'proxy.txt' is empty.")
         self.session = requests.Session()
-        self.session.proxies = {'https': 'https://' + proxy.strip()}
+        self.session.proxies = {'http': 'http://' + proxy.strip()}
 
     def generator(self) -> str:
         captcha = Solve.ReCaptcha("6LeE7LAZAAAAAF0FSYKo4JGYLmdkH4jhjUg_9cXH",
