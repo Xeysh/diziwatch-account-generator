@@ -7,7 +7,9 @@ Solution_Captcha klasöründe Solve.py'daki RunProfile fonksiyonundaki profile d
 
 # CMD'ye bunu yazın:
 
-```pip install -r requirements.txt```
+```
+pip install -r requirements.txt
+```
 
 
 # Credits:
