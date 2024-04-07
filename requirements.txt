@@ -1,0 +1,6 @@
+faker
+psutil
+colorama
+requests
+random_strings
+undetected_chromedriver
