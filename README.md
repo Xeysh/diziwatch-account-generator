@@ -6,5 +6,3 @@ Educational purposes only.
 mailtm.py & proxy - emrovsky
 
 https://github.com/emrovsky
-
-Leave a star for more.
