@@ -3,7 +3,9 @@ import undetected_chromedriver as webdriver
 import os, time, json
 
 def RunProfile(type):
-    # chrome://version/
+    """
+    :return: **Buradan Değiştirin**
+    """
     profile = 'C:\\Users\\pc\\AppData\\Local\\Google\\Chrome\\User Data\\Profile 3'
     options = webdriver.ChromeOptions()
     if type == 'hcaptcha':
