@@ -10,17 +10,18 @@ import psutil
 
 print(Fore.YELLOW + "Captcha'yı siz çözüceksiniz.")
 
+
 class DiziWatch:
-    def __init__(self):
+    def __init__(self) -> None:
         proxy = random.choice(open("proxy.txt", "r").readlines()).strip()
-        if proxy == []:
+        if not proxy:
             raise Exception("'proxy.txt' is empty.")
         self.session = requests.Session()
-        self.session.proxies = {'http': 'http://' + proxy.strip()}
+        self.session.proxies = {'https': 'https://' + proxy.strip()}
 
     def generator(self) -> str:
         captcha = Solve.ReCaptcha("6LeE7LAZAAAAAF0FSYKo4JGYLmdkH4jhjUg_9cXH",
-                "https://diziwatch.net/sign-up/")["data"].strip("'")
+                                  "https://diziwatch.net/sign-up/")["data"].strip("'")
 
         captcha_token = json.loads(captcha)["Solution"]
 
@@ -36,14 +37,17 @@ class DiziWatch:
                        }
 
         r = self.session.post("https://diziwatch.net/wp-admin/admin-ajax.php",
-                 headers={'Content-type': 'application/x-www-form-urlencoded; charset=UTF-8'},
-                 data=info
-        )
+                              headers={'Content-type': 'application/x-www-form-urlencoded; charset=UTF-8'},
+                              data=info)
 
         if r.status_code != 200:
             raise Exception(Fore.RED + f"Kayıt olunurken bir sorun oluştu. - {r.status_code}\n{r.text}")
 
-        return Fore.GREEN + f"Başarıyla kayıt olundu. - {r.status_code}\nİsim: {info['username']}\nParola: {info['passwrd']}\nMail: {info['mail_id']}\nMail Tokeni: {email['token']}"
+        return (Fore.GREEN + f"Başarıyla kayıt olundu. - {r.status_code}\n"
+                             f"İsim: {info['username']}\n"
+                             f"Parola: {info['passwrd']}\n"
+                             f"Mail: {info['mail_id']}\n"
+                             f"Mail Token: {email['token']}")
 
     @staticmethod
     def killer() -> None:
@@ -54,8 +58,9 @@ class DiziWatch:
         :return:
         """
         for proc in psutil.process_iter(['pid', 'name']):
-            if 'chrome.exe' in proc.info['name']:
+            if 'chrome.exe' in proc.name():
                 proc.kill()
+
 
 if __name__ == "__main__":
     try:
