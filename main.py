@@ -51,7 +51,7 @@ class DiziWatch:
         """
         **Arkadaki Google Chrome'ları kapatır ve CPU'ya çok fazla yüklenmeyi durdurur.**
 
-        **Bunu kapatırsanız bilgisayarınızda donma, mavi ekran yaşayabilirsiniz.**
+        **Bu fonksiyonu devre dışı bilgisayarınızda donma, mavi ekran yaşayabilirsiniz.**
         :return:
         """
         for proc in psutil.process_iter(['pid', 'name']):
