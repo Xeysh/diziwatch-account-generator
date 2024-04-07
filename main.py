@@ -1,14 +1,10 @@
 import requests
 from faker import Faker
-from Solution_Captcha import Solve
-import json
 from mailtm import MailTmApi
 from colorama import Fore
 import random
 import sys
 import psutil
-
-print(Fore.YELLOW + "Captcha'yı siz çözüceksiniz.")
 
 
 class DiziWatch:
@@ -20,10 +16,14 @@ class DiziWatch:
         self.session.proxies = {'http': 'http://' + proxy.strip()}
 
     def generator(self) -> str:
-        captcha = Solve.ReCaptcha("6LeE7LAZAAAAAF0FSYKo4JGYLmdkH4jhjUg_9cXH",
-                                  "https://diziwatch.net/sign-up/")["data"].strip("'")
+        try:
+            with open("captcha.txt", "r") as f:
+                captcha = f.read()
+                if not captcha:
+                    raise ValueError(Fore.RED + "Captcha token boş, lütfen captcha.py'ı çalıştırın.")
 
-        captcha_token = json.loads(captcha)["Solution"]
+        except FileNotFoundError:
+            raise Exception(Fore.RED + "Captcha file is missing.")
 
         email = MailTmApi().get_random_mail(MailTmApi().get_random_avaible_domain())
 
@@ -33,7 +33,7 @@ class DiziWatch:
                        'mail_id': email["email"],
                        'passwrd': "whysoserius1",
                        'passwrd2': "whysoserius1",
-                       'captcha': captcha_token
+                       'captcha': captcha
                        }
 
         r = self.session.post("https://diziwatch.net/wp-admin/admin-ajax.php",
@@ -42,6 +42,9 @@ class DiziWatch:
 
         if r.status_code != 200:
             raise Exception(Fore.RED + f"Kayıt olunurken bir sorun oluştu. - {r.status_code}\n{r.text}")
+
+        elif r.status_code == 400:
+            raise Exception(Fore.RED + f"Captcha tokeninin süresi dolmuş, lütfen captcha.py'ı çalıştırın.")
 
         return (Fore.GREEN + f"Başarıyla kayıt olundu. - {r.status_code}\n"
                              f"İsim: {info['username']}\n"
@@ -57,9 +60,9 @@ class DiziWatch:
         **Bu fonksiyonu devre dışı bırakırsanız bilgisayarınızda donma, mavi ekran yaşayabilirsiniz.**
         :return:
         """
-        for proc in psutil.process_iter(['pid', 'name']):
-            if 'chrome.exe' in proc.name():
-                proc.kill()
+        for chrome in psutil.process_iter(['pid', 'name']):
+            if 'chrome.exe' in chrome.name():
+                chrome.kill()
 
 
 if __name__ == "__main__":
