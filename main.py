@@ -12,7 +12,7 @@ print(Fore.YELLOW + "Captcha'yı siz çözüceksiniz.")
 
 class DiziWatch:
 
-    def __init__(self) -> None:
+    def __init__(self):
         proxy = random.choice(open("proxy.txt", "r").readlines()).strip()
         if proxy == []:
             raise Exception("'proxy.txt' is empty.")
@@ -44,7 +44,7 @@ class DiziWatch:
         if r.status_code != 200:
             raise Exception(Fore.RED + f"Kayıt olunurken bir sorun oluştu. - {r.status_code}\n{r.text}")
 
-        return Fore.GREEN + f"Başarıyla kayıt olundu. - {r.status_code}\nİsim: {info['username']}\nParola: {info['passwrd']}"
+        return Fore.GREEN + f"Başarıyla kayıt olundu. - {r.status_code}\nİsim: {info['username']}\nParola: {info['passwrd']}\nMail: {info['mail_id']}"
 
     @staticmethod
     def killer() -> None:
