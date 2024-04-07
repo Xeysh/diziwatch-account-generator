@@ -1,5 +1,7 @@
 # Solution_Captcha
 
+# Credits:
+
 Discord Account:
 
 ID: 151404356577525760
