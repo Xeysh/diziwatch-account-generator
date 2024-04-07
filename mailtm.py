@@ -4,7 +4,7 @@ import requests
 
 class MailTmApi:
 
-    def __init__(self):
+    def __init__(self) -> None:
         self.session = requests.session()
         self.session.headers = {
             'authority': 'api.mail.gw',
@@ -23,12 +23,13 @@ class MailTmApi:
             'sec-gpc': '1',
             'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36',
         }
-    def get_random_avaible_domain(self):
+
+    def get_random_avaible_domain(self) -> str:
         response = self.session.get('https://api.mail.gw/domains')
         random_mail_domain = random.choice(response.json()["hydra:member"])["domain"]
         return random_mail_domain
 
-    def get_random_mail(self,domain):
+    def get_random_mail(self,domain: str) -> dict[str, str]:
         nickname = random_strings.random_hex(10)
         password = random_strings.random_hex(8)
 
@@ -44,7 +45,14 @@ class MailTmApi:
 
         response = self.session.post('https://api.mail.gw/token', json=json_data)
         return {"email": f'{nickname}@{domain}', "password": password, "token": response.json()["token"]}
-    def get_emails(self,mail_token):
+
+    def get_emails(self,mail_token) -> list[str]:
         self.session.headers['authorization'] = f'Bearer {mail_token}'
         response = self.session.get('https://api.mail.gw/messages')
         return response.json()["hydra:member"]
+
+# if __name__ == '__main__':
+#     mail = MailTmApi()
+#     domain = mail.get_random_avaible_domain()
+#     random_mail = mail.get_random_mail(domain)["token"]
+#     get_emails = mail.get_emails(random_mail)
