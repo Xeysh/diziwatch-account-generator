@@ -52,7 +52,7 @@ class DiziWatch:
                              f"Parola: {info['passwrd']}\n"
                              f"Mail: {info['mail_id']}\n"
                              f"Mail Token: {email['token']}"
-                )
+                ) + "\n" + "-" * 50
 
 
 if __name__ == "__main__":
