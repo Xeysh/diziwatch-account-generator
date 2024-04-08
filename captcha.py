@@ -7,7 +7,7 @@ import psutil
 
 class Captcha:
     @staticmethod
-    def captcha():
+    def captcha() -> None:
         print(Fore.YELLOW + "Captcha'yı siz çözüceksiniz.")
 
         captcha_data = Solve.ReCaptcha("6LeE7LAZAAAAAF0FSYKo4JGYLmdkH4jhjUg_9cXH",
