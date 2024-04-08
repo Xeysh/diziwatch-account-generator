@@ -17,3 +17,5 @@ pip install -r requirements.txt
 mailtm.py & proxy - emrovsky
 
 https://github.com/emrovsky
+
+❌ 10 Stars - Hesap bilgilerini .txt'ye yazma.
