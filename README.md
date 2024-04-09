@@ -18,4 +18,4 @@ mailtm.py & proxy - emrovsky
 
 https://github.com/emrovsky
 
-❌ 10 Stars - Hesap bilgilerini .txt'ye yazma + threading.
+❌ 10 Stars - Threading
