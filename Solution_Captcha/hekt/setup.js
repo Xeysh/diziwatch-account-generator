@@ -1,1 +1,0 @@
-!function(){function e(){browser.permissions.request({origins:["*://hekt.akmal.dev/*","*://*.hcaptcha.com/captcha/*"]})}document.getElementById("setup-button").addEventListener("click",e)}();
