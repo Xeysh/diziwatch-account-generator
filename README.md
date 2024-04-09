@@ -3,7 +3,7 @@ Yalnızca eğitim amaçlıdır.
 
 # Kullanım
 
-Solution_Captcha klasöründe Solve.py'daki RunProfile fonksiyonundaki profile değişkenini kendi bilgisayarınızda yer alan chrome profile'iyle değiştiriceksiniz.
+main.py'ı çalıştırın
 
 # CMD'ye bunu yazın:
 
