@@ -59,10 +59,3 @@ class MailTmApi:
         self.session.headers['authorization'] = f'Bearer {mail_token}'
         response = self.session.get('https://api.mail.gw/messages')
         return response.json()["hydra:member"]
-
-# if __name__ == '__main__':
-#     mail = MailTmApi()
-#     domain = mail.get_random_avaible_domain()
-#     random_mail = mail.get_random_mail(domain)["token"]
-#     get_emails = mail.get_emails(random_mail)
-#     print(get_emails)
