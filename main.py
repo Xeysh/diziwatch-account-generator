@@ -36,7 +36,7 @@ class DiziWatch:
             raise Exception(Fore.RED + f"Kayıt olunurken bir sorun oluştu. - {r.status_code}\n{r.text}")
 
         with open("accounts.txt", "a") as x:
-            x.write(f"{email['email']}:whysoserius1")
+            x.write(f"{email['email']}:whysoserius1" + "\n")
         
         return f"[{email['email'}] Kayıt olundu."
 
