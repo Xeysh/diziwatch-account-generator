@@ -35,12 +35,10 @@ class DiziWatch:
         if r.status_code != 200:
             raise Exception(Fore.RED + f"Kayıt olunurken bir sorun oluştu. - {r.status_code}\n{r.text}")
 
-        return (Fore.GREEN + f"Başarıyla kayıt olundu. - {r.status_code}\n"
-                             f"İsim: {info['username']}\n"
-                             f"Parola: {info['passwrd']}\n"
-                             f"Mail: {info['mail_id']}\n"
-                             f"Mail Token: {email['token']}"
-                ) + "\n" + "-" * 50
+        with open("accounts.txt", "a") as x:
+            x.write(f"{email['email']}:whysoserius1")
+        
+        return f"[{email['email'}] Kayıt olundu."
 
 
 if __name__ == "__main__":
