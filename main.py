@@ -38,7 +38,7 @@ class DiziWatch:
         with open("accounts.txt", "a") as x:
             x.write(f"{email['email']}:whysoserius1" + "\n")
         
-        return f"[{email['email'}] Kayıt olundu."
+        return f"[{email['email'}] Kayıt olundu." + "\n"
 
 
 if __name__ == "__main__":
