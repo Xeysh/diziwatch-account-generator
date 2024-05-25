@@ -1,4 +1,2 @@
 faker
-colorama
 requests
-random_strings
