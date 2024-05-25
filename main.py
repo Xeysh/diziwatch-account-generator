@@ -6,9 +6,7 @@ import random
 
 class DiziWatch:
     def __init__(self) -> None:
-        proxy = random.choice(open("proxy.txt", "r").readlines()).strip()
         self.session = requests.Session()
-        self.session.proxies = {'http': 'http://' + proxy.strip()}
 
     def generator(self) -> str:
 
