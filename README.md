@@ -1,12 +1,3 @@
-# diziwatch-account-generator
-Yalnızca eğitim amaçlıdır.
-
-# Kullanım
-
-main.py'ı çalıştırın
-
-# CMD'ye bunu yazın:
-
 ```
 pip install -r requirements.txt
 ```
